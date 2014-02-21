@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataGraph navigation demo</title>
+</head>
+<body>
+<h1>LoopBack data graph navigation demo</h1>
+<ul>
+    <li><a href='/api/members'>/api/members</a>
+    <li><a href='/api/members?filter[include]=posts'>/api/members?filter[include]=posts</a>
+    <li><a href='/api/members?filter[include][posts]=author'>/api/members?filter[include][posts]=author</a>
+    <li>
+        <a href='/api/members?filter[include][posts]=author&filter[where][age]=21'>/api/members?filter[include][posts]=author&filter[where][age]=21</a>
+    <li><a href='/api/members?filter[include][posts]=author&filter[limit]=2'>/api/members?filter[include][posts]=author&filter[limit]=2</a>
+</ul>
+
+<p>
+    <a href="/explorer">API explorer</a>
+</p>
+</body>
+</html>
