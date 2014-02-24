@@ -2,105 +2,106 @@ var loopback = require('loopback');
 var app = require('./../app');
 var debug = require('debug')('datagraph');
 
-var Member, Post, Passport;
+var Customer, Order, Review;
 
 setup(function () {
 
-  Passport.find({include: 'owner'}, function (err, passports) {
-    debug('passports.owner', passports);
+  Review.find({include: 'owner'}, function (err, reviews) {
+    debug('reviews.author', reviews);
   });
 
-  Member.find({include: 'posts'}, function (err, members) {
-    debug('members.posts', members);
+  Customer.find({include: 'orders'}, function (err, customers) {
+    debug('customers.orders', customers);
   });
 
-  Passport.find({include: {owner: 'posts'}}, function (err, passports) {
-    debug('passports.owner.posts', passports);
+  Review.find({include: {author: 'orders'}}, function (err, reviews) {
+    debug('reviews.author.orders', reviews);
   });
 
-  Passport.find({
-    include: {owner: {posts: 'author'}}
-  }, function (err, passports) {
-    debug('passports.owner.posts.author', passports);
+  Review.find({
+    include: {author: {orders: 'owner'}}
+  }, function (err, reviews) {
+    debug('reviews.author.orders.owner', reviews);
   });
 
-  Member.find({include: ['posts', 'passports']}, function (err, members) {
-    debug('members.passports && members.posts', members);
+  Customer.find({include: ['orders', 'reviews']}, function (err, customers) {
+    debug('customers.reviews && customers.orders', customers);
   });
 
 });
 
 function setup(done) {
   var db = loopback.createDataSource({connector: 'memory'});
-  Member = db.createModel('Member', {
+  Customer = db.createModel('Customer', {
     name: String,
     age: Number
   });
-  Passport = db.createModel('Passport', {
-    number: String
+  Review = db.createModel('Review', {
+    product: String,
+    star: Number
   });
-  Post = db.createModel('Post', {
-    title: String
+  Order = db.createModel('Order', {
+    description: String
   });
 
-  Passport.belongsTo('owner', {model: Member});
-  Member.hasMany('passports', {foreignKey: 'ownerId'});
-  Member.hasMany('posts', {foreignKey: 'memberId'});
-  Post.belongsTo('author', {model: Member, foreignKey: 'memberId'});
+  Review.belongsTo(Customer, {foreignKey: 'authorId', as: 'author'});
+  Customer.hasMany(Review, {foreignKey: 'authorId', as: 'reviews'});
+  Customer.hasMany(Order, {foreignKey: 'customerId', as: 'orders'});
+  Order.belongsTo(Customer, {foreignKey: 'customerId'});
 
-  app.model(Member);
-  app.model(Post);
-  app.model(Passport);
+  app.model(Customer);
+  app.model(Order);
+  app.model(Review);
 
   db.automigrate(function () {
-    var createdUsers = [];
-    var createdPassports = [];
-    var createdPosts = [];
-    createUsers();
-    function createUsers() {
+    var createdCustomers = [];
+    var createdReviews = [];
+    var createdOrders = [];
+    createCustomers();
+    function createCustomers() {
       clearAndCreate(
-        Member,
+        Customer,
         [
-          {name: 'Member A', age: 21},
-          {name: 'Member B', age: 22},
-          {name: 'Member C', age: 23},
-          {name: 'Member D', age: 24},
-          {name: 'Member E', age: 25}
+          {name: 'Customer A', age: 21},
+          {name: 'Customer B', age: 22},
+          {name: 'Customer C', age: 23},
+          {name: 'Customer D', age: 24},
+          {name: 'Customer E', age: 25}
         ],
         function (items) {
-          createdUsers = items;
-          createPassports();
+          createdCustomers = items;
+          createReviews();
         }
       );
     }
 
-    function createPassports() {
+    function createReviews() {
       clearAndCreate(
-        Passport,
+        Review,
         [
-          {number: '1', ownerId: createdUsers[0].id},
-          {number: '2', ownerId: createdUsers[1].id},
-          {number: '3'}
+          {product: 'Product1', star: 3, authorId: createdCustomers[0].id},
+          {product: 'Product2', star: 2, authorId: createdCustomers[1].id},
+          {product: 'Product2', star: 5}
         ],
         function (items) {
-          createdPassports = items;
-          createPosts();
+          createdReviews = items;
+          createOrders();
         }
       );
     }
 
-    function createPosts() {
+    function createOrders() {
       clearAndCreate(
-        Post,
+        Order,
         [
-          {title: 'Post A', memberId: createdUsers[0].id},
-          {title: 'Post B', memberId: createdUsers[0].id},
-          {title: 'Post C', memberId: createdUsers[0].id},
-          {title: 'Post D', memberId: createdUsers[1].id},
-          {title: 'Post E'}
+          {description: 'Order A', customerId: createdCustomers[0].id},
+          {description: 'Order B', customerId: createdCustomers[0].id},
+          {description: 'Order C', customerId: createdCustomers[0].id},
+          {description: 'Order D', customerId: createdCustomers[1].id},
+          {description: 'Order E'}
         ],
         function (items) {
-          createdPosts = items;
+          createdOrders = items;
           done();
         }
       );
