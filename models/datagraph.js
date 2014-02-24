@@ -32,16 +32,17 @@ setup(function () {
 
 function setup(done) {
   var db = loopback.createDataSource({connector: 'memory'});
-  Customer = db.createModel('Customer', {
+  Customer = db.createModel('customer', {
     name: String,
     age: Number
   });
-  Review = db.createModel('Review', {
+  Review = db.createModel('review', {
     product: String,
     star: Number
   });
-  Order = db.createModel('Order', {
-    description: String
+  Order = db.createModel('order', {
+    description: String,
+    total: Number
   });
 
   Review.belongsTo(Customer, {foreignKey: 'authorId', as: 'author'});
@@ -94,11 +95,11 @@ function setup(done) {
       clearAndCreate(
         Order,
         [
-          {description: 'Order A', customerId: createdCustomers[0].id},
-          {description: 'Order B', customerId: createdCustomers[0].id},
-          {description: 'Order C', customerId: createdCustomers[0].id},
-          {description: 'Order D', customerId: createdCustomers[1].id},
-          {description: 'Order E'}
+          {description: 'Order A', total: 200.45, customerId: createdCustomers[0].id},
+          {description: 'Order B', total: 100, customerId: createdCustomers[0].id},
+          {description: 'Order C', total: 350.45, customerId: createdCustomers[0].id},
+          {description: 'Order D', total: 150.45, customerId: createdCustomers[1].id},
+          {description: 'Order E', total: 10}
         ],
         function (items) {
           createdOrders = items;
