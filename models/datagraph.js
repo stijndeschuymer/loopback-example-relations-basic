@@ -45,6 +45,7 @@ function setup(done) {
     total: Number
   });
 
+  Customer.scope("youngFolks", {where: {age: {lte: 22}}});
   Review.belongsTo(Customer, {foreignKey: 'authorId', as: 'author'});
   Customer.hasMany(Review, {foreignKey: 'authorId', as: 'reviews'});
   Customer.hasMany(Order, {foreignKey: 'customerId', as: 'orders'});
