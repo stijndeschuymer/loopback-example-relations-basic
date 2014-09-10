@@ -196,11 +196,13 @@ Follow the prompts and create the following relationships:
     - Order
       - property name for the relation: orders
       - custom foreign key: customerId
+---
 - Review
   - belongs to
     - Customer
       - property name for the relation: author
       - custom foreign key: authorId
+---
 - Order
   - belongs to
     - Customer
