@@ -205,7 +205,7 @@ Follow the prompts and create the following relationships:
   - belongs to
     - Customer
 
-> For any item without *property name for the relation* or *custom foreign key*, just use the default value.
+> For any item without *property name for the relation* or *custom foreign key*, just use the defaults. LoopBack will [derive](http://docs.strongloop.com/display/LB/BelongsTo+relations#BelongsTorelations-Overview) these values automatically when you don't specify one.
 
 When you're done, your `common/models/customer.json` should look like:
 ```json

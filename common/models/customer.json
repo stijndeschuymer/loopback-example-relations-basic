@@ -19,12 +19,7 @@
     "orders": {
       "type": "hasMany",
       "model": "Order",
-      "foreignKey": ""
-    },
-    "author": {
-      "type": "hasMany",
-      "model": "Review",
-      "foreignKey": "authorId"
+      "foreignKey": "customerId"
     }
   },
   "acls": [],

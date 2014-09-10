@@ -11,11 +11,6 @@
   },
   "validations": [],
   "relations": {
-    "customer": {
-      "type": "belongsTo",
-      "model": "Customer",
-      "foreignKey": ""
-    },
     "author": {
       "type": "belongsTo",
       "model": "Customer",
