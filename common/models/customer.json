@@ -1,0 +1,32 @@
+{
+  "name": "Customer",
+  "base": "PersistedModel",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "reviews": {
+      "type": "hasMany",
+      "model": "Review",
+      "foreignKey": "authorId"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": ""
+    },
+    "author": {
+      "type": "hasMany",
+      "model": "Review",
+      "foreignKey": "authorId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Order",
+  "base": "PersistedModel",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "total": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "customer": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "customerId": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": "ls"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
