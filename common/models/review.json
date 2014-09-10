@@ -1,0 +1,27 @@
+{
+  "name": "Review",
+  "base": "PersistedModel",
+  "properties": {
+    "product": {
+      "type": "string"
+    },
+    "star": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "customer": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": ""
+    },
+    "author": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": "authorId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
