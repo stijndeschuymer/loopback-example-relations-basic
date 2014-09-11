@@ -78,6 +78,7 @@ Follow the prompts to finish creating the model. Repeat for `Review` and `Order`
 - Order
   - description:string
   - total:number
+
 > You should see `customer.json`, `order.json` and `review.json` in `common/models` when you're done.
 
 ###3. Create the Front-end
