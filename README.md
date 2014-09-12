@@ -1,15 +1,15 @@
-#loopback-example-datagraph
+#LoopBack model relations example app
 The purpose of this example is to demonstrate model relations in [LoopBack](http://loopback.io).
 
-##Table of Contents
+##Contents
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Example](#example)
-  - [Getting Started](#1-getting-started)
-  - [Create the Models](#2-create-the-models)
-  - [Create the Front-end](#3-create-the-front-end)
-  - [Add Sample Data](#4-add-sample-data)
-  - [Create Model Relations](#5-create-model-relations)
+  - [Getting started](#1-getting-started)
+  - [Create the models](#2-create-the-models)
+  - [Create the front-end](#3-create-the-front-end)
+  - [Add sample data](#4-add-sample-data)
+  - [Create model relations](#5-create-model-relations)
   - [Try the API](#6-try-the-api)
   - [Conclusion](#7-conclusion)
 
@@ -27,7 +27,7 @@ You should also have the following installed:
 - [StrongLoop Controller](http://strongloop.com/get-started/) `npm install -g strongloop`
 
 ##Example
-###1. Getting Started
+###1. Getting started
 Let's begin by [scaffolding](http://docs.strongloop.com/pages/viewpage.action?pageId=3836281) the application:
 ```shell
 slc loopback
@@ -37,13 +37,13 @@ You should see:
 ...
 [?] Enter a directory name where to create the project: (.)
 ```
-Enter `loopback-example-datagraph` as the project name (we'll refer to the generated directory as the *project root* from hereon). Finish the creation process by following the prompts.
+Enter `loopback-example-relation` as the project name (we'll refer to the generated directory as the *project root* from hereon). Finish the creation process by following the prompts.
 
-###2. Create the Models
+###2. Create the models
 We will be using an in-memory database to hold our data. [Create a model](http://docs.strongloop.com/display/LB/Creating+models) named `Customer` by running:
 
 ```shell
-cd loopback-example-datagraph
+cd loopback-example-relation
 slc loopback:model Customer
 ```
 You should see:
@@ -81,7 +81,7 @@ Follow the prompts to finish creating the model. Repeat for `Review` and `Order`
 
 > You should see `customer.json`, `order.json` and `review.json` in `common/models` when you're done.
 
-###3. Create the Front-end
+###3. Create the front-end
 Let's create a front-end to make it easier to analyze our data. To install [EJS](http://embeddedjs.com/), run the following from the project root:
 ```shell
 npm install --save ejs
@@ -115,10 +115,10 @@ Inside the `views` directory, create `index.html` with the following contents:
 <DOCTYPE html>
 <html>
   <head>
-    <title>loopback-example-datagraph</title>
+    <title>loopback-example-relation</title>
   </head>
   <body>
-    <h1>loopback-example-datagraph</h1>
+    <h1>loopback-example-relation</h1>
     <p>
       <a href="/explorer">API Explorer</a>
     </p>
@@ -143,7 +143,7 @@ You can view what we have so far by executing `slc run server` from the project 
 
 > You may also notice some of the API endpoints return empty arrays or errors. It's because the database is empty. In addition, we need to define model relations for some of the API endpoints to work. Don't fret, we'll get to all that very soon!
 
-###4. Add Sample Data
+###4. Add sample data
 In `server/boot`, create a script named `create-customers.js` with the following contents:
 ```node
 var customers = [
@@ -183,7 +183,7 @@ Create two more scripts, [create-reviews.js](server/boot/create-reviews.js) and 
 
 > `Model.scope...` is only in `create-customers.js`.
 
-###5. Create Model Relations
+###5. Create model relations
 From the project root, run:
 ```shell
 slc loopback:relation
