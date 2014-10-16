@@ -1,6 +1,6 @@
 {
-  "name": "loopback-example-relation",
-  "version": "2.0.0",
+  "name": "loopback-example-relations-basic",
+  "version": "2.1.0",
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint ."
