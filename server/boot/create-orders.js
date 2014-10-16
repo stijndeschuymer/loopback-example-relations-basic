@@ -8,7 +8,7 @@ var orders = [
 
 module.exports = function(server) {
   var dataSource = server.dataSources.db;
-  dataSource.automigrate('order', function(er) {
+  dataSource.automigrate('Order', function(er) {
     if (er) throw er;
     var Model = server.models.Order;
     //create sample data

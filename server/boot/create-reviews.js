@@ -6,7 +6,7 @@ var reviews = [
 
 module.exports = function(server) {
   var dataSource = server.dataSources.db;
-  dataSource.automigrate('review', function(er) {
+  dataSource.automigrate('Review', function(er) {
     if (er) throw er;
     var Model = server.models.Review;
     //create sample data
