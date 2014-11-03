@@ -8,9 +8,11 @@ var customers = [
 
 module.exports = function(server) {
   var dataSource = server.dataSources.db;
+  var Model = server.models.Customer;
+  //define a custom scope
+  Model.scope('youngFolks', {where: {age: {lte: 22 }}});
   dataSource.automigrate('Customer', function(er) {
     if (er) throw er;
-    var Model = server.models.Customer;
     //create sample data
     var count = customers.length;
     customers.forEach(function(customer) {
@@ -20,11 +22,8 @@ module.exports = function(server) {
         count--;
         if (count === 0) {
           console.log('done');
-          dataSource.disconnect();
         }
       });
     });
-    //define a custom scope
-    Model.scope('youngFolks', {where: {age: {lte: 22 }}});
   });
 };
