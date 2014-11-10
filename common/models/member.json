@@ -2,15 +2,15 @@
   "name": "Member",
   "base": "PersistedModel",
   "options": {
-    "idInjection": true,
+    "idInjection": false,
     "mssql": {
       "schema": "dbo",
       "table": "Member"
     }
   },
   "properties": {
-    "userid":{
-      "id":1,
+    "userid": {
+      "id":true,
       "type": "string",
       "mssql": {
         "columnName": "userid",

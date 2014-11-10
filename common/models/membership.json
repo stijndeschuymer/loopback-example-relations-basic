@@ -2,16 +2,16 @@
   "name": "Membership",
   "base": "PersistedModel",
   "options": {
-    "idInjection": true,
+    "idInjection": false,
     "mssql": {
       "schema": "dbo",
       "table": "Membership"
     }
   },
   "properties": {
-    "userid":{
-      "id": 1,
+    "userid": {
       "type": "string",
+      "id":true,
       "mssql": {
         "columnName": "userid",
         "dataType": "uniqueidentifier",
@@ -42,13 +42,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "member": {
-      "type": "belongsTo",
-      "model": "Member",
-      "foreignKey": "userid"
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": []
 }
