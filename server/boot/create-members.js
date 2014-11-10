@@ -5,7 +5,7 @@ var members = [
 ];
 
 module.exports = function(server) {
-  var dataSource = server.dataSources.db;
+  var dataSource = server.dataSources.msdb;
   var Model = server.models.Member;
   dataSource.automigrate('Member', function(er) {
     if (er) throw er;

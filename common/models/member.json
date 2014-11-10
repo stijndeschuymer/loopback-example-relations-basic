@@ -1,16 +1,44 @@
 {
   "name": "Member",
   "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "mssql": {
+      "schema": "dbo",
+      "table": "Member"
+    }
+  },
   "properties": {
     "userid":{
-      "id":true,
-      "type": "string"
+      "id":1,
+      "type": "string",
+      "mssql": {
+        "columnName": "userid",
+        "dataType": "uniqueidentifier",
+        "nullable": "NO"
+      }
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "mssql": {
+        "columnName": "name",
+        "dataType": "nvarchar",
+        "dataLength": 50,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
     },
     "age": {
-      "type": "number"
+      "type": "number",
+      "mssql": {
+        "columnName": "age",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      }
     }
   },
   "validations": [],

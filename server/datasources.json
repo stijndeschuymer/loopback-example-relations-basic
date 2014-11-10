@@ -2,5 +2,16 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "msdb": {
+    "host": "10.211.55.3",
+    "port": 1433,
+    "database": "test3",
+    "username": "snappcar_site",
+    "password": "hyper00",
+    "name": "test3",
+    "connector": "mssql"
   }
+
+
 }

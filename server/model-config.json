@@ -26,10 +26,10 @@
   },
   "Member": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "msdb"
   },
   "Membership": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "msdb"
   }
 }

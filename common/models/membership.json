@@ -1,16 +1,44 @@
 {
   "name": "Membership",
   "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "mssql": {
+      "schema": "dbo",
+      "table": "Membership"
+    }
+  },
   "properties": {
     "userid":{
-      "id": true,
-      "type": "string"
+      "id": 1,
+      "type": "string",
+      "mssql": {
+        "columnName": "userid",
+        "dataType": "uniqueidentifier",
+        "nullable": "NO"
+      }
     },
     "ismember": {
-      "type": "boolean"
+      "type": "boolean",
+      "mssql": {
+        "columnName": "ismember",
+        "dataType": "bit",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
     },
     "type": {
-      "type": "string"
+      "type": "string",
+      "mssql": {
+        "columnName": "type",
+        "dataType": "nvarchar",
+        "dataLength": 50,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
     }
   },
   "validations": [],

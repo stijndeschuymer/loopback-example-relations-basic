@@ -11,6 +11,7 @@
     "errorhandler": "^1.2.2",
     "loopback": "^2.7.0",
     "loopback-boot": "^2.3.0",
+    "loopback-connector-mssql": "^1.1.4",
     "loopback-datasource-juggler": "^2.10.3",
     "serve-favicon": "^2.1.6"
   },
