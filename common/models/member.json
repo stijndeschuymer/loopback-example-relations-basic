@@ -12,9 +12,16 @@
     "userid": {
       "id":true,
       "type": "string",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
       "mssql": {
         "columnName": "userid",
         "dataType": "uniqueidentifier",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
         "nullable": "NO"
       }
     },
