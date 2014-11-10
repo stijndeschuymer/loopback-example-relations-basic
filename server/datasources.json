@@ -4,12 +4,12 @@
     "connector": "memory"
   },
   "msdb": {
-    "host": "10.211.55.3",
+    "host": "",
     "port": 1433,
-    "database": "test3",
-    "username": "snappcar_site",
-    "password": "hyper00",
-    "name": "test3",
+    "database": "",
+    "username": "",
+    "password": "",
+    "name": "",
     "connector": "mssql"
   }
 
