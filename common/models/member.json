@@ -1,20 +1,24 @@
 {
-  "name": "Review",
+  "name": "Member",
   "base": "PersistedModel",
   "properties": {
-    "product": {
+    "userid":{
+      "id":true,
       "type": "string"
     },
-    "star": {
+    "name": {
+      "type": "string"
+    },
+    "age": {
       "type": "number"
     }
   },
   "validations": [],
   "relations": {
-    "author": {
+    "membership": {
       "type": "belongsTo",
-      "model": "Customer",
-      "foreignKey": "authorId"
+      "model": "Membership",
+      "foreignKey": "userid"
     }
   },
   "acls": [],

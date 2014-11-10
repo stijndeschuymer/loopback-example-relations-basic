@@ -24,15 +24,11 @@
     "public": false,
     "dataSource": "db"
   },
-  "Customer": {
+  "Member": {
     "public": true,
     "dataSource": "db"
   },
-  "Review": {
-    "public": true,
-    "dataSource": "db"
-  },
-  "Order": {
+  "Membership": {
     "public": true,
     "dataSource": "db"
   }

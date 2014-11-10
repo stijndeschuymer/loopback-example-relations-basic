@@ -1,0 +1,26 @@
+{
+  "name": "Membership",
+  "base": "PersistedModel",
+  "properties": {
+    "userid":{
+      "id": true,
+      "type": "string"
+    },
+    "ismember": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "userid"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
